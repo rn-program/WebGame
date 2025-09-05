@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <title>すごろくゲーム</title>
+</head>
+
+<body onload="addButton()">
+    <button onclick="dice()">サイコロを振る</button>
+    <p id="dice-result">サイコロの結果</p>
+    <div id="board"></div>
+
+    <script>
+        // すごろくの盤面を作成
+        function addButton() {
+            for (let i = 1; i <= 30; i++) {
+                let piece = document.createElement("div"); // ここを button → div に変更
+                piece.textContent = "";                     // 中身は空のまま
+                piece.style.width = "30px";                 // 幅
+                piece.style.height = "30px";                // 高さ
+                piece.style.border = "1px solid black";     // 見やすいように枠線を追加（任意）
+                piece.style.display = "inline-block";       // 横に並べるため
+                piece.style.margin = "2px";                 // 少し間隔をつける
+                document.getElementById("board").appendChild(piece);
+            }
+        }
+
+        // サイコロを定義
+        function dice() {
+            let result = document.getElementById("dice-result");
+            let dice = Math.floor(Math.random() * 6) + 1;
+            result.textContent = dice + "の目が出ました";
+            return dice
+        }
+
+
+    </script>
+</body>
+
+</html>
